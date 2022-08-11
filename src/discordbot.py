@@ -1,11 +1,11 @@
-import os, random
-
+import os
 import discord
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 import api.players
 
 load_dotenv()
+BOT_CHANNEL_ID = 1007151995351740526 # your discord channel id here
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix='!i ')
@@ -90,7 +90,7 @@ async def myLoop():
         embed.add_field(name="-", value=heroes, inline=True)
         embed.add_field(name=f"{duration}min", value=kda, inline=True)
         
-        channel = bot.get_channel(1007151995351740526)
+        channel = bot.get_channel(BOT_CHANNEL_ID)
         await channel.send(embed=embed)
         # await channel.send(reponse_str)
         
