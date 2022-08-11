@@ -65,9 +65,6 @@ def getPlayer(account_id):
         insertPlayer(account_id)
         recent_matchs_id = [match['match_id'] for match in players[account_id]['recent_matches']]
 
-        print(last_recent_matchs_id)
-        print(recent_matchs_id)
-        print(unposted_matchs.keys())
         for match_id in reversed(recent_matchs_id): # reversed to adjust chronologic order.
             if match_id not in last_recent_matchs_id and match_id not in unposted_matchs.keys():
                 unposted_matchs[match_id] = api.getMatchResume(match_id)

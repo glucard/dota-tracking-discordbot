@@ -5,7 +5,6 @@ def getPlayer(account_id):
     r = requests.get(f"https://api.opendota.com/api/players/{account_id}")
 
     if r.status_code != 200:
-        """print(f"getPlayer: Error code {r.status_code}")"""
         raise HTTPError()
     
     return r.json()
@@ -14,7 +13,6 @@ def getHeroes():
     r = requests.get("https://api.opendota.com/api/heroes")
 
     if r.status_code != 200:
-        """print(f"getPlayer: Error code {r.status_code}")"""
         raise HTTPError()
     
     return r.json()
@@ -23,8 +21,6 @@ def getMatch(match_id):
     r = requests.get(f"https://api.opendota.com/api/matches/{match_id}")
 
     if r.status_code != 200:
-        print(f"https://api.opendota.com/api/matchs/{match_id}")
-        """print(f"getPlayer: Error code {r.status_code}")"""
         raise HTTPError()
     
     return r.json()

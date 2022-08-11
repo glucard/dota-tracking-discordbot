@@ -40,33 +40,13 @@ print("Done.")
 
 @tasks.loop(minutes = 60) # repeat after every x time
 async def myLoop():
-    """all_account_id = api.players.players.keys()
-    reponse_str = ""
-    posted_matches_id = []
 
-    for match_id in api.players.unposted_matchs.keys():
-        match = api.players.unposted_matchs[match_id]
-        print(match)
-
-        for i, account_id in enumerate(match['players']):
-            if i == 0:
-                reponse_str += " > RADIANT" + (" Winner" if match['radiant_win'] else "") +" Team\n"
-            if i == 5:
-                reponse_str += "> DIRE" + (" Winner" if not match['radiant_win'] else "") +" Team\n"
-
-            player = match['players'][account_id]
-            personaname = f"**{api.players.players[account_id]['profile']['personaname']}**" if account_id in all_account_id else "**Strange**"
-            reponse_str += f"{personaname} {player['kills']}/{player['deaths']}/{player['assists']} {player['net_worth']}g\n"
-    
-    for match_id in posted_matches_id:
-        del api.players.unposted_matchs[match_id]"""
     api.players.updateThread(1)
     all_account_id = api.players.players.keys()
     posted_matches_id = []
 
     for i, match_id in enumerate(api.players.unposted_matchs.keys()):
         match = api.players.unposted_matchs[match_id]
-        print(match)
         names = ""
         heroes = ""
         kda = ""
