@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import api.players
 
 load_dotenv()
+
+LOOP_INTERVAL_TIME = 60 # in minutes
 BOT_CHANNEL_ID = 1007151995351740526 # your discord channel id here
 TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -16,13 +18,6 @@ async def add(ctx, account_id):
     player = api.players.getPlayer(account_id)
     personaname = player['profile']['personaname']
     response = f"{personaname} added."
-    await ctx.send(response)
-
-@bot.command(name='update', help='Add player ID')
-async def update(ctx):
-    print("updating...")
-    api.players.updateThread(1)
-    response = "Updated."
     await ctx.send(response)
 
 @bot.command(name='medals', help='Show all players medals.')
@@ -38,7 +33,7 @@ async def medals(ctx):
 
 print("Done.")
 
-@tasks.loop(minutes = 60) # repeat after every x time
+@tasks.loop(minutes = LOOP_INTERVAL_TIME) # repeat after every x time
 async def myLoop():
 
     api.players.updateThread(1)
