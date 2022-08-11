@@ -45,8 +45,8 @@ async def myLoop():
     all_account_id = api.players.players.keys()
     posted_matches_id = []
 
-    for i, match_id in enumerate(api.players.unposted_matchs.keys()):
-        match = api.players.unposted_matchs[match_id]
+    for i, match_id in enumerate(api.players.unposted_matches.keys()):
+        match = api.players.unposted_matches[match_id]
         names = ""
         heroes = ""
         kda = ""
@@ -95,7 +95,7 @@ async def myLoop():
         # await channel.send(reponse_str)
         
     for match_id in posted_matches_id:
-        del api.players.unposted_matchs[match_id]
+        del api.players.unposted_matches[match_id]
     
     
 
